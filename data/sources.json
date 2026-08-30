@@ -1,0 +1,60 @@
+{
+  "sources": [
+    {
+      "id": "gdou",
+      "name": "广东海洋大学就业信息网",
+      "type": "html_list",
+      "enabled": true,
+      "note": "本校就业网（jysd 平台）：首页 + 校招公告栏(/campus) + 宣讲会栏(/teachin)，2027届生源信息已发布",
+      "config": {"base": "https://gdou.jysd.com", "paths": ["/", "/campus", "/teachin"], "max_items": 60}
+    },
+    {
+      "id": "haitou",
+      "name": "海投网·广海大站",
+      "type": "html_list",
+      "enabled": false,
+      "note": "核验发现疑似反爬（自动化访问 302 到 404）且已并入鱼泡直聘，默认关闭；浏览器确认可用后可改 enabled 开启",
+      "config": {"base": "https://gdou.haitou.cc", "paths": ["/xjh/list/"], "max_items": 40}
+    },
+    {
+      "id": "iguopin",
+      "name": "国聘·央企招聘平台",
+      "type": "html_list",
+      "enabled": false,
+      "note": "动态渲染+接口鉴权，需 Playwright（Tier2），默认关闭",
+      "config": {"base": "https://www.iguopin.com", "paths": ["/"], "max_items": 30}
+    },
+    {
+      "id": "nowcoder",
+      "name": "牛客·校招日历",
+      "type": "html_list",
+      "enabled": false,
+      "note": "JS 渲染，需 Playwright（Tier2），默认关闭",
+      "config": {"base": "https://www.nowcoder.com", "paths": ["/calendar"], "max_items": 30}
+    },
+    {
+      "id": "lingnan",
+      "name": "岭南师范学院就业网（湛江）",
+      "type": "html_list",
+      "enabled": false,
+      "note": "粤西覆盖备选：主页静态可解析（能抓到少量公告），但就业信息列表页为 JS 渲染，需 Playwright（Tier2）才能完整抓取；暂不启用",
+      "config": {"base": "https://lingnan.bysjy.com.cn", "paths": ["/"], "max_items": 30}
+    },
+    {
+      "id": "gdupt",
+      "name": "广东石油化工学院就业网（茂名）",
+      "type": "html_list",
+      "enabled": false,
+      "note": "茂名石化特色高校，粤西化工/电气雇主聚集，但站点当前校外网络无法访问（疑似仅校内网）；在校或校内 VPN 环境下改 enabled 为 true 即可启用",
+      "config": {"base": "https://job.gdupt.edu.cn", "paths": ["/"], "max_items": 40}
+    },
+    {
+      "id": "custom-template",
+      "name": "自定义源模板",
+      "type": "html_list",
+      "enabled": false,
+      "note": "复制本条、改 base 和 paths 即可接入任意静态公告列表页（如某企业官网新闻列表）",
+      "config": {"base": "https://example.com", "paths": ["/news/"], "max_items": 30}
+    }
+  ]
+}

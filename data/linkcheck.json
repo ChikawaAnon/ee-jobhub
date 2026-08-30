@@ -1,0 +1,1014 @@
+{
+ "last_run": "2026-08-30T01:19:27",
+ "running": false,
+ "results": {
+  "http://campus.51job.com/desay/gsjs.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:15:47"
+  },
+  "http://www.eaglerise.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:15:47"
+  },
+  "http://www.foryougroup.com/dz_zhaopinxz.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:15:48"
+  },
+  "http://www.risongtc.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "探测超时（可能防爬或网络限制）",
+   "checked_at": "2026-08-30T01:15:56"
+  },
+  "https://campus.51job.com/szny2026": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:15:57"
+  },
+  "https://campus.boe.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:15:59"
+  },
+  "https://campus.cec.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:00"
+  },
+  "https://campus.chint.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:01"
+  },
+  "https://campus.envisionenergy.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:16:02"
+  },
+  "https://campus.gotion.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:16:03"
+  },
+  "https://campus.hongfa.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:06"
+  },
+  "https://campus.jiateng.com?以官网为准": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:16:07"
+  },
+  "https://campus.nader.cn": {
+   "state": "suspect",
+   "status": 0,
+   "note": "探测超时（可能防爬或网络限制）",
+   "checked_at": "2026-08-30T01:16:16"
+  },
+  "https://campus.nio.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:16"
+  },
+  "https://campus.sunwoda.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "连接被重置（可能防爬/仅校内网）",
+   "checked_at": "2026-08-30T01:16:17"
+  },
+  "https://campus.szport.com?以官网为准": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:16:18"
+  },
+  "https://campus.tcl.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:19"
+  },
+  "https://campus.vivo.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:16:21"
+  },
+  "https://career.honor.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:23"
+  },
+  "https://career.huawei.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:23"
+  },
+  "https://careers.midea.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:24"
+  },
+  "https://ceec.iguopin.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:25"
+  },
+  "https://cgn.hotjob.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:25"
+  },
+  "https://chrcmp.chinahr.com/pages/sanxia/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:26"
+  },
+  "https://cosmx.zhiye.com/campus": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:27"
+  },
+  "https://crrc.hotjob.cn/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:28"
+  },
+  "https://dec2026.iguopin.com/job": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:29"
+  },
+  "https://envicool.zhiye.com/jobs": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:30"
+  },
+  "https://gdou.jysd.com/campus/view/id/1133430": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:31"
+  },
+  "https://gdou.jysd.com/teachin/view/id/207445": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:32"
+  },
+  "https://gdou.jysd.com/teachin/view/id/208781": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:33"
+  },
+  "https://geg2026.zhaopin.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:34"
+  },
+  "https://global.abb/group/en/careers": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:38"
+  },
+  "https://hopewind.zhiye.com/home": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:39"
+  },
+  "https://hr.cctc.cc/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:40"
+  },
+  "https://hr.cnnc.com.cn": {
+   "state": "suspect",
+   "status": 412,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:16:42"
+  },
+  "https://hr.xiaomi.com/campus": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:43"
+  },
+  "https://jasic.zhiye.com/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:44"
+  },
+  "https://job.byd.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:45"
+  },
+  "https://job.sgepri.sgcc.com.cn": {
+   "state": "suspect",
+   "status": 412,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:16:45"
+  },
+  "https://job.sinopec.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:46"
+  },
+  "https://jobs.siemens.com/careers?location=China": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:50"
+  },
+  "https://jobs.sungrowpower.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:51"
+  },
+  "https://liyuanheng.zhiye.com/campus/jobs": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:52"
+  },
+  "https://m.zhipin.com/companys/829c8783182553201HV83dy0.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:53"
+  },
+  "https://minotech.zhiye.com/Campus": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:54"
+  },
+  "https://recruit.inovance.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:54"
+  },
+  "https://rencaishichang.chd.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:55"
+  },
+  "https://sec.hotjob.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:56"
+  },
+  "https://talent.catl.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:58"
+  },
+  "https://tbea.hotjob.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:16:59"
+  },
+  "https://we.dji.com/zh-CN/campus": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:01"
+  },
+  "https://www.aikosolar.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:03"
+  },
+  "https://www.baowugroup.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:04"
+  },
+  "https://www.broad-ocean.com/broad-ocean-cn/post.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:05"
+  },
+  "https://www.calb-tech.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:06"
+  },
+  "https://www.canadiansolar.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:06"
+  },
+  "https://www.cetc.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:07"
+  },
+  "https://www.changan.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:08"
+  },
+  "https://www.chery.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:09"
+  },
+  "https://www.cimc.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:09"
+  },
+  "https://www.cnooc.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:10"
+  },
+  "https://www.comac.cc": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:11"
+  },
+  "https://www.crpower.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:12"
+  },
+  "https://www.crrcgc.cc": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:13"
+  },
+  "https://www.cssc.net.cn": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:17:14"
+  },
+  "https://www.cxmt.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:15"
+  },
+  "https://www.danfoss.cn": {
+   "state": "suspect",
+   "status": 0,
+   "note": "连接被重置（可能防爬/仅校内网）",
+   "checked_at": "2026-08-30T01:17:16"
+  },
+  "https://www.deerma.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:17"
+  },
+  "https://www.delixi-electric.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:18"
+  },
+  "https://www.delta-emea.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:20"
+  },
+  "https://www.eastgroup.com": {
+   "state": "suspect",
+   "status": 403,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:17:22"
+  },
+  "https://www.eaton.com/cn/zh-cn/company/careers.html": {
+   "state": "suspect",
+   "status": 0,
+   "note": "探测超时（可能防爬或网络限制）",
+   "checked_at": "2026-08-30T01:17:30"
+  },
+  "https://www.estun.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:32"
+  },
+  "https://www.evebattery.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:33"
+  },
+  "https://www.ewpt.com/Job.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:33"
+  },
+  "https://www.fii-foxconn.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:34"
+  },
+  "https://www.gacne.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:35"
+  },
+  "https://www.galanz.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:37"
+  },
+  "https://www.gevernova.com/careers": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:39"
+  },
+  "https://www.ginlong.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:40"
+  },
+  "https://www.goertek.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:40"
+  },
+  "https://www.goldwind.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:42"
+  },
+  "https://www.goodwe.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:42"
+  },
+  "https://www.gsk.com.cn/xyzp/index_1018.aspx": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:43"
+  },
+  "https://www.guanhao.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:44"
+  },
+  "https://www.gwm.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:45"
+  },
+  "https://www.haid.com.cn": {
+   "state": "suspect",
+   "status": 521,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:35:00"
+  },
+  "https://www.haier.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:46"
+  },
+  "https://www.hanslaser.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:47"
+  },
+  "https://www.harbin-electric.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:48"
+  },
+  "https://www.hikvision.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:49"
+  },
+  "https://www.hisense.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:50"
+  },
+  "https://www.hitachienergy.com/cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:50"
+  },
+  "https://www.hithium.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:51"
+  },
+  "https://www.huahong.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:52"
+  },
+  "https://www.hymson.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:53"
+  },
+  "https://www.infypower.cn/career": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:54"
+  },
+  "https://www.invt.com.cn": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:17:54"
+  },
+  "https://www.jasolar.com": {
+   "state": "suspect",
+   "status": 403,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:17:55"
+  },
+  "https://www.jinkosolar.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:17:56"
+  },
+  "https://www.jinpan.com.cn": {
+   "state": "suspect",
+   "status": 0,
+   "note": "连接被重置（可能防爬/仅校内网）",
+   "checked_at": "2026-08-30T01:17:58"
+  },
+  "https://www.jpt.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:01"
+  },
+  "https://www.kdtmac.com/joinus/1983059370596147200.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:02"
+  },
+  "https://www.kehua.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:02"
+  },
+  "https://www.kstar.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:04"
+  },
+  "https://www.leadintel.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:11"
+  },
+  "https://www.leapmotor.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:11"
+  },
+  "https://www.legrand.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:12"
+  },
+  "https://www.leisai.com/recruitment/index.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:13"
+  },
+  "https://www.leoch.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:14"
+  },
+  "https://www.lixiang.com/employ/campus.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:15"
+  },
+  "https://www.longi.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:16"
+  },
+  "https://www.luxshare-ict.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:17"
+  },
+  "https://www.manst.com/job/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:17"
+  },
+  "https://www.megmeet.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:19"
+  },
+  "https://www.mindray.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:20"
+  },
+  "https://www.myse.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:21"
+  },
+  "https://www.nrec.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:22"
+  },
+  "https://www.oppo.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:23"
+  },
+  "https://www.powerbeijing.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:18:24"
+  },
+  "https://www.rockwellautomation.com/en-us/company/careers.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:25"
+  },
+  "https://www.sac-china.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:18:26"
+  },
+  "https://www.sany.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:26"
+  },
+  "https://www.sdicpower.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:28"
+  },
+  "https://www.se.com/ww/en/about-us/careers/overview.jsp": {
+   "state": "suspect",
+   "status": 403,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:18:28"
+  },
+  "https://www.sgmw.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:29"
+  },
+  "https://www.shenergy.com.cn": {
+   "state": "suspect",
+   "status": 403,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:18:30"
+  },
+  "https://www.shenling.com/careers/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:32"
+  },
+  "https://www.sieyuan.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:33"
+  },
+  "https://www.sinexcel.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:33"
+  },
+  "https://www.smics.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:34"
+  },
+  "https://www.spacechina.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:35"
+  },
+  "https://www.svolt.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:36"
+  },
+  "https://www.syst.com.cn/cn/zwztc/index_77.aspx": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:37"
+  },
+  "https://www.szincrease.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:38"
+  },
+  "https://www.szmc.net": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:39"
+  },
+  "https://www.tec.cn": {
+   "state": "suspect",
+   "status": 0,
+   "note": "证书异常，浏览器访问注意提示",
+   "checked_at": "2026-08-30T01:18:39"
+  },
+  "https://www.tesla.cn/careers": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:40"
+  },
+  "https://www.tongwei.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:41"
+  },
+  "https://www.topstarltd.com/lang-cn/recruitinglist/006002003.html": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:42"
+  },
+  "https://www.trinasolar.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:43"
+  },
+  "https://www.united-imaging.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:44"
+  },
+  "https://www.vertiv.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:45"
+  },
+  "https://www.weichai.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:46"
+  },
+  "https://www.whchem.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:47"
+  },
+  "https://www.xcmg.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:50"
+  },
+  "https://www.xinje.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:18:51"
+  },
+  "https://www.xjgc.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "探测超时（可能防爬或网络限制）",
+   "checked_at": "2026-08-30T01:18:59"
+  },
+  "https://www.ymtc.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:00"
+  },
+  "https://www.zeekrlife.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:01"
+  },
+  "https://www.zhaopin.com/companydetail/CZ478958610.htm": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:02"
+  },
+  "https://www.zjenergy.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:03"
+  },
+  "https://www.zte.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:04"
+  },
+  "https://xiaopeng.jobs.feishu.cn/campus/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:05"
+  },
+  "https://yanmade.com/joinus": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:06"
+  },
+  "https://yizumi.zhiye.com/": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:07"
+  },
+  "https://zgh.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:09"
+  },
+  "https://zhaopin.china-cdt.com": {
+   "state": "suspect",
+   "status": 0,
+   "note": "探测超时（可能防爬或网络限制）",
+   "checked_at": "2026-08-30T01:19:17"
+  },
+  "https://zhaopin.chnenergy.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:18"
+  },
+  "https://zhaopin.chng.com.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:19"
+  },
+  "https://zhaopin.cnpc.com.cn": {
+   "state": "suspect",
+   "status": 412,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:19:20"
+  },
+  "https://zhaopin.csg.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:21"
+  },
+  "https://zhaopin.greeyun.com": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:22"
+  },
+  "https://zhaopin.pipechina.com.cn": {
+   "state": "suspect",
+   "status": 0,
+   "note": "连接被重置（可能防爬/仅校内网）",
+   "checked_at": "2026-08-30T01:19:23"
+  },
+  "https://zhaopin.powerchina.cn": {
+   "state": "ok",
+   "status": 200,
+   "note": "",
+   "checked_at": "2026-08-30T01:19:24"
+  },
+  "https://zhaopin.sgcc.com.cn": {
+   "state": "suspect",
+   "status": 412,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:19:25"
+  },
+  "https://zhaopin.spic.com.cn": {
+   "state": "suspect",
+   "status": 503,
+   "note": "疑似防爬，浏览器人工可达",
+   "checked_at": "2026-08-30T01:19:26"
+  }
+ }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电气秋招整合 · 2027届</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<noscript>
+  <div style="max-width:640px;margin:40px auto;padding:20px 24px;border:2px solid #ef4444;border-radius:14px;font-size:15px;line-height:1.9;background:#fff;color:#1e293b">
+    ⚠️ 本页需要开启 JavaScript 才能展示企业列表。如果你是在微信里直接打开的：<br>
+    请点右上角「···」→ 选择「在浏览器打开」（Safari / Chrome 均可），即可正常使用全部功能。
+  </div>
+</noscript>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo"><span class="bolt">⚡</span><span class="logo-text">电气秋招整合</span></div>
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-view="jobs">🏫 校招信息</button>
+      <button class="nav-tab" data-view="timeline">📅 时间线</button>
+      <button class="nav-tab" data-view="guide">🎓 电气专区</button>
+    </nav>
+    <div class="top-actions">
+      <button class="btn btn-primary btn-sm" id="btn-refresh">⟳ 更新数据</button>
+      <button class="btn btn-ghost btn-sm" id="btn-digest" title="每日增量简报：新开招企业/新动态/即将截止">📋 今日简报</button>
+      <button class="btn btn-ghost btn-sm" id="btn-search" title="公告正文全文搜索（户口/专业要求/xx届）">🔍 全文搜公告</button>
+      <button class="btn btn-ghost btn-sm" id="btn-linkcheck" title="检查所有官方投递入口是否可用">🔗 链接体检</button>
+      <button class="btn btn-ghost btn-sm" id="btn-inbox" title="爬虫抓到的未匹配动态">📥 收件箱</button>
+      <button class="btn btn-ghost btn-sm" id="btn-share" title="分享给微信好友（免费）">📤 分享</button>
+      <button class="btn btn-ghost btn-sm" id="btn-theme" title="切换深色模式">🌙</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ======== 校招信息视图 ======== -->
+  <section id="view-jobs">
+    <div class="hero">
+      <h1>2027届秋招 / 实习 / 春招
+        <span class="live-badge"><span class="live-dot"></span>电气工程及其自动化专用</span>
+      </h1>
+      <p class="sub" id="hero-sub">整合电网/发电/设计院、电气设备/工控、新能源/车企/电池、泛工科延伸四大方向，一键直达官方投递入口。点「更新数据」抓取最新动态，投递前请以官方公告为准。</p>
+      <div class="stats-grid" id="stats-grid"></div>
+    </div>
+
+    <div class="filter-panel">
+      <div class="filter-row">
+        <input class="search-box" id="f-q" type="search"
+               placeholder="搜索企业 / 岗位方向 / 城市，如「国网」「继电保护」「深圳」">
+        <span class="count-note" id="result-count"></span>
+      </div>
+      <div class="filter-row">
+        <div class="chip-group" id="f-batch"><span class="group-label">批次</span></div>
+        <div class="chip-group" id="f-cat"><span class="group-label">方向</span></div>
+      </div>
+      <div class="filter-row">
+        <div class="chip-group" id="f-status"><span class="group-label">状态</span></div>
+      </div>
+      <div class="filter-row">
+        <select class="select" id="f-sub"><option value="">全部子类</option></select>
+        <select class="select" id="f-city"><option value="">全部城市</option></select>
+        <select class="select" id="f-year"><option value="">全部届别</option></select>
+        <select class="select" id="f-tag"><option value="">标签不限</option></select>
+        <select class="select" id="f-sort"></select>
+        <label class="switch-label"><input type="checkbox" id="f-pinned">只看重点</label>
+        <button class="btn btn-sm" id="btn-reset">重置筛选</button>
+        <button class="btn btn-green btn-sm" id="btn-add">＋ 提交上新</button>
+      </div>
+    </div>
+
+    <div id="company-list"></div>
+  </section>
+
+  <!-- ======== 时间线视图 ======== -->
+  <section id="view-timeline" style="display:none">
+    <div class="hero">
+      <h1>📅 招聘时间线 <span class="live-badge" id="tl-count-badge"></span></h1>
+      <p class="sub">按截止时间排布，橙色圆点为 14 天内截止。多数央企批次以官网公告为准，未定档的会显示预计窗口。</p>
+    </div>
+    <div id="timeline-content"></div>
+  </section>
+
+  <!-- ======== 电气专区视图 ======== -->
+  <section id="view-guide" style="display:none">
+    <div class="hero">
+      <h1>🎓 电气专区 · 报考指南</h1>
+      <p class="sub">电气工程及其自动化就业方向拆解：四大方向怎么选、考什么、什么时间干什么。点击企业名可跳转到列表筛选结果。</p>
+    </div>
+    <div id="guide-content"></div>
+  </section>
+
+  <footer>
+    数据来源：企业官方招聘渠道 + 牛客/应届生/国聘等公开平台聚合 · 薪资均为爆料口径<strong>仅供参考</strong> · 投递前请以企业官方公告为准<br>
+    本站为个人求职自用工具 · Project-005-ee-jobhub · 最近更新：<span id="footer-last-refresh">—</span>
+  </footer>
+</div>
+
+<!-- ======== 企业详情弹窗 ======== -->
+<div class="modal-mask" id="modal-detail">
+  <div class="modal">
+    <button class="modal-close" data-close="modal-detail">✕</button>
+    <div id="detail-body"></div>
+  </div>
+</div>
+
+<!-- ======== 编辑弹窗 ======== -->
+<div class="modal-mask" id="modal-edit">
+  <div class="modal">
+    <button class="modal-close" data-close="modal-edit">✕</button>
+    <h2>✏️ 修正信息</h2>
+    <p class="modal-sub" id="edit-sub">人工修改的字段会被标记保护，爬虫更新不会覆盖。</p>
+    <div class="form-grid" id="edit-form"></div>
+    <div class="form-error" id="edit-error"></div>
+    <div class="form-actions">
+      <button class="btn" data-close="modal-edit">取消</button>
+      <button class="btn btn-primary" id="btn-save-edit">保存修改</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======== 提交上新弹窗 ======== -->
+<div class="modal-mask" id="modal-add">
+  <div class="modal">
+    <button class="modal-close" data-close="modal-add">✕</button>
+    <h2>＋ 提交上新</h2>
+    <p class="modal-sub">手动补充企业或招聘动态，保存后立即出现在列表中。</p>
+    <div class="form-grid" id="add-form"></div>
+    <div class="form-error" id="add-error"></div>
+    <div class="form-actions">
+      <button class="btn" data-close="modal-add">取消</button>
+      <button class="btn btn-green" id="btn-save-add">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======== 更新进度弹窗 ======== -->
+<div class="modal-mask" id="modal-refresh">
+  <div class="modal narrow">
+    <button class="modal-close" data-close="modal-refresh">✕</button>
+    <h2>⟳ 数据更新</h2>
+    <p class="modal-sub" id="refresh-sub">正在从各数据源抓取最新动态…</p>
+    <div id="refresh-results"></div>
+    <hr class="divider">
+    <p class="form-hint" id="refresh-snapshot"></p>
+    <div class="form-actions">
+      <button class="btn" data-close="modal-refresh">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======== 每日简报弹窗 ======== -->
+<div class="modal-mask" id="modal-digest">
+  <div class="modal">
+    <button class="modal-close" data-close="modal-digest">✕</button>
+    <h2>📋 今日简报</h2>
+    <p class="modal-sub" id="digest-sub">加载中…</p>
+    <div class="kw-editor" id="kw-editor"></div>
+    <div id="digest-body"></div>
+  </div>
+</div>
+
+<!-- ======== 公告全文搜索弹窗 ======== -->
+<div class="modal-mask" id="modal-search">
+  <div class="modal">
+    <button class="modal-close" data-close="modal-search">✕</button>
+    <h2>🔍 公告全文搜索</h2>
+    <p class="modal-sub">搜索已存档公告的正文内容，如「户口」「专业要求」「不招」「薪资」等细节。公告来自爬虫自动快照。</p>
+    <div class="filter-row">
+      <input class="search-box" id="article-q" type="search" placeholder="输入关键词，如「户口」「继保」「湛江」">
+      <button class="btn btn-primary" id="btn-article-go">搜索</button>
+    </div>
+    <div id="article-results"></div>
+  </div>
+</div>
+
+<!-- ======== 链接体检弹窗 ======== -->
+<div class="modal-mask" id="modal-linkcheck">
+  <div class="modal">
+    <button class="modal-close" data-close="modal-linkcheck">✕</button>
+    <h2>🔗 链接体检</h2>
+    <p class="modal-sub" id="linkcheck-sub">加载中…</p>
+    <div class="form-actions" style="justify-content:flex-start">
+      <button class="btn btn-primary btn-sm" id="btn-linkcheck-run">立即检查全部链接</button>
+      <span class="form-hint">每周自动检查一次；手动检查约需几分钟，可关闭弹窗稍后回来看</span>
+    </div>
+    <div id="linkcheck-body"></div>
+  </div>
+</div>
+
+<!-- ======== 收件箱弹窗 ======== -->
+<div class="modal-mask" id="modal-inbox">
+  <div class="modal">
+    <button class="modal-close" data-close="modal-inbox">✕</button>
+    <h2>📥 收件箱 · 未匹配动态</h2>
+    <p class="modal-sub">爬虫抓到但没能自动对应到企业的公告，可手动转为企业或忽略。</p>
+    <div id="inbox-list"></div>
+  </div>
+</div>
+
+<!-- ======== 分享弹窗 ======== -->
+<div class="modal-mask" id="modal-share">
+  <div class="modal narrow">
+    <button class="modal-close" data-close="modal-share">✕</button>
+    <h2>📤 分享给微信好友</h2>
+    <p class="modal-sub">两种方式全免费，好友不需要装任何东西。分享的是当前筛选结果，先筛选再分享更精准。</p>
+    <div class="share-opt">
+      <button class="btn btn-green" id="btn-share-img">📸 生成分享长图（PNG）</button>
+      <p class="form-hint">把当前筛选的企业列表画成一张图片，保存后直接发到微信。图片在微信里点开就能看，最省事。</p>
+    </div>
+    <div class="share-opt">
+      <button class="btn btn-primary static-hide" id="btn-share-html">🌐 导出离线完整版网页（.html）</button>
+      <p class="form-hint">整个网站（全部企业+筛选+详情+报考指南）打包成一个文件，以「文件」形式发微信，好友点开选「浏览器打开」即可完整使用。想给对方一个网址：把这个 .html 文件拖到 netlify.com/drop 免费托管，30 秒得到公开链接。</p>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
