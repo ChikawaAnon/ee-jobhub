@@ -27,32 +27,126 @@
 """
 from __future__ import annotations
 
+import json
+import os
 import threading
 import traceback
 from datetime import date, datetime
 from pathlib import Path
 
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from . import digest, keywords, linkcheck, schema, storage
+from . import auth as auth_mod
 from .crawler import archive, runner
 
 WEB_DIR = Path(__file__).resolve().parents[1] / "web"
+AUTH_FILE = Path(__file__).resolve().parents[1] / "data" / "auth.json"
 
-app = FastAPI(title="电气秋招整合站", version="1.0.0")
+
+def _load_auth() -> auth_mod.AuthManager:
+    """data/auth.json 配置了 salt + password_sha256 才启用写接口鉴权；
+    缺省关闭（本机开发行为不变）。公网部署必须配置。"""
+    try:
+        d = json.loads(AUTH_FILE.read_text(encoding="utf-8"))
+        return auth_mod.AuthManager(d.get("salt"), d.get("password_sha256"))
+    except (OSError, json.JSONDecodeError):
+        return auth_mod.AuthManager(None, None)
+
+
+AUTH = _load_auth()
+
+
+async def require_auth(request: Request) -> None:
+    if not AUTH.enabled:
+        return
+    token = (request.headers.get("Authorization") or "")
+    if token.startswith("Bearer "):
+        token = token[len("Bearer "):]
+    if not AUTH.check(token):
+        raise HTTPException(401, "需要登录")
+
+
+def _client_ip(request: Request) -> str:
+    xff = request.headers.get("X-Forwarded-For") or ""
+    return xff.split(",")[0].strip() if xff else (request.client.host if request.client else "?")
+
+
+def schedule_reexport() -> None:
+    """写操作后自动重生公网静态页（仅服务器设置了 EE_PUBLIC_INDEX 时）。
+
+    后台线程执行，失败不影响写操作本身；导出内部用原子替换防半截文件。
+    """
+    target = os.environ.get("EE_PUBLIC_INDEX")
+    if not target:
+        return
+
+    def _job():
+        try:
+            from .export_static import export_to
+            out = export_to(target)
+            print(f"[reexport] public page updated -> {out}")
+        except Exception:  # noqa: BLE001 重发布失败不影响主流程
+            traceback.print_exc()
+
+    threading.Thread(target=_job, daemon=True, name="reexport").start()
+
+
+app = FastAPI(title="电气秋招整合站", version="1.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"],
                    allow_headers=["*"])
 
 
 # ---------------- 页面 ----------------
 
+_index_cache: tuple | None = None
+
+
+def _index_html() -> bytes:
+    """首页：CSS/JS 内联成单响应。
+
+    公网明文链路对新建连接有较高概率 RST（连接建立后复用则稳定），
+    首屏压成 1 个请求可大幅提高弱链路下的加载成功率；SW 命中后二次访问走缓存。
+    """
+    global _index_cache
+    names = ("index.html", "style.css", "sha256.js", "app.js")
+    key = tuple((WEB_DIR / n).stat().st_mtime_ns for n in names)
+    if _index_cache and _index_cache[0] == key:
+        return _index_cache[1]
+    html = (WEB_DIR / "index.html").read_text(encoding="utf-8")
+    css = (WEB_DIR / "style.css").read_text(encoding="utf-8")
+    html = html.replace('<link rel="stylesheet" href="static/style.css">',
+                        "<style>\n" + css + "\n</style>", 1)
+    for js in ("sha256.js", "app.js"):
+        code = (WEB_DIR / js).read_text(encoding="utf-8")
+        # 防御：JS 源码（含注释/字符串）中若出现脚本闭合标签会让 HTML 解析器
+        # 提前截断内联脚本块；\/ 在字符串与正则中均等价于 /，注释里也无害
+        code = code.replace("</script>", "<\\/script>")
+        html = html.replace('<script src="static/' + js + '"></script>',
+                            "<script>\n" + code + "\n</script>", 1)
+    body = html.encode("utf-8")
+    _index_cache = (key, body)
+    return body
+
+
 @app.get("/")
 def index():
-    return FileResponse(WEB_DIR / "index.html")
+    return Response(content=_index_html(), media_type="text/html; charset=utf-8")
+
+
+@app.get("/manifest.webmanifest")
+def pwa_manifest():
+    return FileResponse(WEB_DIR / "manifest.webmanifest",
+                        media_type="application/manifest+json")
+
+
+@app.get("/sw.js")
+def pwa_sw():
+    return FileResponse(WEB_DIR / "sw.js", media_type="application/javascript")
 
 
 app.mount("/static", StaticFiles(directory=WEB_DIR), name="static")
@@ -86,6 +180,8 @@ def _filtered(params) -> list[dict]:
         companies = [c for c in companies if params.tag in c.get("tags", [])]
     if params.only_pinned:
         companies = [c for c in companies if c.get("pinned")]
+    if params.only_applied:
+        companies = [c for c in companies if c.get("applied")]
 
     def days_left(c):
         try:
@@ -123,6 +219,7 @@ class FilterParams(BaseModel):
     year: str = ""
     tag: str = ""
     only_pinned: bool = False
+    only_applied: bool = False
     sort: str = "recommend"
 
 
@@ -187,7 +284,39 @@ def _all_cities() -> list[str]:
     return sorted(cities)
 
 
-# ---------------- 手动维护 ----------------
+# ---------------- 应用内登录（写接口鉴权；查询保持公开） ----------------
+
+@app.get("/api/auth/check")
+def api_auth_check(request: Request):
+    token = (request.headers.get("Authorization") or "")
+    if token.startswith("Bearer "):
+        token = token[len("Bearer "):]
+    return {"enabled": AUTH.enabled, "ok": AUTH.check(token)}
+
+
+@app.get("/api/auth/challenge")
+def api_auth_challenge(request: Request):
+    try:
+        nonce = AUTH.new_challenge(_client_ip(request))
+    except PermissionError as e:
+        raise HTTPException(429, str(e))
+    return {"nonce": nonce, "salt": AUTH.salt}
+
+
+class LoginBody(BaseModel):
+    nonce: str = ""
+    resp: str = ""
+
+
+@app.post("/api/auth/login")
+def api_auth_login(body: LoginBody):
+    token = AUTH.login(body.nonce, body.resp)
+    if not token:
+        raise HTTPException(401, "密码错误或挑战已过期，请重试")
+    return {"token": token}
+
+
+# ---------------- 手动维护（写接口，鉴权开启时需登录） ----------------
 
 class NewCompany(BaseModel):
     name: str = Field(min_length=2, max_length=60)
@@ -206,7 +335,7 @@ class NewCompany(BaseModel):
 
 
 @app.post("/api/companies")
-def api_add_company(body: NewCompany):
+def api_add_company(body: NewCompany, _: None = Depends(require_auth)):
     err = schema.is_valid_new_company(body.model_dump())
     if err:
         raise HTTPException(400, err)
@@ -230,11 +359,12 @@ def api_add_company(body: NewCompany):
     rec["updated_at"] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
     companies.append(rec)
     storage.save_companies(companies)
+    schedule_reexport()
     return {"ok": True, "id": cid}
 
 
 @app.delete("/api/companies/{company_id}")
-def api_delete_company(company_id: str):
+def api_delete_company(company_id: str, _: None = Depends(require_auth)):
     companies = storage.load_companies()
     target = next((c for c in companies if c["id"] == company_id), None)
     if not target:
@@ -245,6 +375,7 @@ def api_delete_company(company_id: str):
     if target.get("auto_added"):
         from .crawler.matching import company_keys
         storage.add_blocked(company_keys(target))
+    schedule_reexport()
     return {"ok": True}
 
 
@@ -253,7 +384,7 @@ class PatchBody(BaseModel):
 
 
 @app.patch("/api/companies/{company_id}")
-def api_patch_company(company_id: str, body: PatchBody):
+def api_patch_company(company_id: str, body: PatchBody, _: None = Depends(require_auth)):
     companies = storage.load_companies()
     target = next((c for c in companies if c["id"] == company_id), None)
     if not target:
@@ -269,6 +400,7 @@ def api_patch_company(company_id: str, body: PatchBody):
         target.setdefault("manual_overrides", []).extend(changed)
     target["updated_at"] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
     storage.save_companies(companies)
+    schedule_reexport()
     return {"ok": True}
 
 
@@ -295,7 +427,7 @@ class KeywordsBody(BaseModel):
 
 
 @app.post("/api/keywords")
-def api_keywords_set(body: KeywordsBody):
+def api_keywords_set(body: KeywordsBody, _: None = Depends(require_auth)):
     saved = keywords.save_keywords(body.keywords)
     return {"ok": True, "keywords": saved,
             "note": "关键词在下次生成简报时生效"}
@@ -329,7 +461,7 @@ def api_linkcheck():
 
 
 @app.post("/api/linkcheck/run")
-def api_linkcheck_run():
+def api_linkcheck_run(_: None = Depends(require_auth)):
     ok, msg = linkcheck.start_manual(storage.load_companies())
     if not ok:
         raise HTTPException(409, msg)
@@ -344,7 +476,7 @@ def api_inbox():
 
 
 @app.delete("/api/inbox")
-def api_inbox_delete(url: str):
+def api_inbox_delete(url: str, _: None = Depends(require_auth)):
     items = [i for i in storage.load_inbox() if i.get("url") != url]
     storage.save_inbox(items)
     return {"ok": True}
@@ -353,7 +485,7 @@ def api_inbox_delete(url: str):
 # ---------------- 爬虫更新 ----------------
 
 @app.post("/api/refresh")
-def api_refresh():
+def api_refresh(_: None = Depends(require_auth)):
     ok, msg = runner.start_refresh()
     if not ok:
         raise HTTPException(409, msg)

@@ -40,7 +40,7 @@ MANUAL_FIELDS = [
     "alias", "batch", "status", "positions", "position_details", "apply_url",
     "official_site", "cities", "start_date", "deadline", "deadline_note",
     "salary_text", "salary_structure", "salary_source", "desc", "ee_notes",
-    "tags", "pinned",
+    "tags", "pinned", "applied",
 ]
 CRAWLABLE_FIELDS = ["news", "last_crawl"]
 SYSTEM_FIELDS = ["id", "name", "cat", "sub", "ctype", "industry", "sources",
@@ -67,6 +67,7 @@ DEFAULTS = {
     "ee_notes": "",
     "tags": [],
     "pinned": False,
+    "applied": False,
     "sources": [],
     "last_verified": None,
     "verify_note": "",
