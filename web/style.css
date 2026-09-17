@@ -380,3 +380,67 @@ footer { text-align: center; color: var(--muted); font-size: 12.5px; padding: 30
   .count-note { width: 100%; margin-left: 0; }
   .modal { padding: 20px 16px; }
 }
+
+/* ================= 登录鉴权 ================= */
+#auth-mask {
+  position: fixed; inset: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  padding: 20px;
+}
+#auth-mask[hidden] { display: none !important; }
+#auth-box {
+  width: min(340px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 30px 26px;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(30, 41, 59, 0.18);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.auth-icon { font-size: 40px; line-height: 1; }
+.auth-title { font-size: 21px; font-weight: 800; color: var(--text); }
+.auth-sub { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+#auth-password {
+  width: 100%; box-sizing: border-box;
+  padding: 11px 14px; font-size: 15px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--card-soft); color: var(--text);
+  outline: none;
+}
+#auth-password:focus { border-color: var(--primary); }
+#auth-submit {
+  padding: 11px; font-size: 15px; font-weight: 700;
+  border: none; border-radius: 10px;
+  background: var(--primary); color: #fff; cursor: pointer;
+}
+#auth-submit:disabled { opacity: 0.6; cursor: default; }
+.auth-error { font-size: 13px; color: #ef4444; }
+.auth-skip { font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: none; }
+.auth-skip:hover { color: var(--primary); }
+
+/* ================= 站内截止提醒 ================= */
+.deadline-alert {
+  max-width: 960px; margin: 14px auto 0;
+  background: linear-gradient(90deg, #fff7ed, #ffedd5);
+  border: 1px solid #fed7aa; border-radius: 12px;
+  padding: 10px 14px; display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: #9a3412; line-height: 1.7;
+}
+.deadline-alert[hidden] { display: none !important; }
+.da-icon { flex: none; }
+.da-text b { color: #c2410c; }
+.da-days { font-style: normal; color: #ea580c; font-weight: 600; }
+.da-days.urgent { color: #dc2626; }
+.da-close { margin-left: auto; flex: none; border: none; background: none;
+  cursor: pointer; color: #9a3412; font-size: 14px; }
+[data-theme="dark"] .deadline-alert { background: #37241a; border-color: #7c4a1e; color: #fdba74; }
+[data-theme="dark"] .da-text b, [data-theme="dark"] .da-days { color: #fb923c; }
+[data-theme="dark"] .da-days.urgent, [data-theme="dark"] .da-close { color: #f87171; }
+
+/* ================= 我的投递标记 ================= */
+.btn-applymark { color: var(--muted); border-color: var(--border); }
+.btn-applymark.on { background: var(--green-weak, #ecfdf5); color: #059669;
+  border-color: #059669; font-weight: 700; }
+body.static .btn-applymark { display: none !important; }

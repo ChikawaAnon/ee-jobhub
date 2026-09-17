@@ -2,9 +2,15 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>电气秋招整合 · 2027届</title>
-<link rel="stylesheet" href="/static/style.css">
+<meta name="theme-color" content="#4f6ef7">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="static/icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="static/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -45,6 +51,7 @@
       </h1>
       <p class="sub" id="hero-sub">整合电网/发电/设计院、电气设备/工控、新能源/车企/电池、泛工科延伸四大方向，一键直达官方投递入口。点「更新数据」抓取最新动态，投递前请以官方公告为准。</p>
       <div class="stats-grid" id="stats-grid"></div>
+      <div id="deadline-alert" class="deadline-alert" hidden></div>
     </div>
 
     <div class="filter-panel">
@@ -66,7 +73,7 @@
         <select class="select" id="f-year"><option value="">全部届别</option></select>
         <select class="select" id="f-tag"><option value="">标签不限</option></select>
         <select class="select" id="f-sort"></select>
-        <label class="switch-label"><input type="checkbox" id="f-pinned">只看重点</label>
+        <label class="switch-label"><input type="checkbox" id="f-pinned">只看重点</label><label class="switch-label"><input type="checkbox" id="f-applied">只看已投</label>
         <button class="btn btn-sm" id="btn-reset">重置筛选</button>
         <button class="btn btn-green btn-sm" id="btn-add">＋ 提交上新</button>
       </div>
@@ -220,6 +227,21 @@
 
 <div id="toast"></div>
 
-<script src="/static/app.js"></script>
+<div id="auth-mask" hidden>
+  <form id="auth-box" autocomplete="off">
+    <div class="auth-icon">⚡</div>
+    <div class="auth-title">电气秋招整合</div>
+    <div class="auth-sub">编辑操作需要登录</div>
+    <input id="auth-password" type="password" placeholder="访问密码" autocomplete="current-password">
+    <button id="auth-submit" type="submit">登 录</button>
+    <div id="auth-error" class="auth-error" hidden></div>
+    <a id="auth-skip" class="auth-skip">先逛逛，仅浏览 →</a>
+  </form>
+</div>
+
+<script src="static/sha256.js"></script>
+<script src="static/app.js"></script>
+<!-- 三站互跳导航 + 固定到桌面（服务器 /portal/ 共享脚本，见 server/portal/） -->
+<script src="/portal/portal.js?v=4" data-app="jobhub" defer></script>
 </body>
 </html>

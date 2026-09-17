@@ -26,9 +26,85 @@ function daysLeft(c) {
 }
 
 // 兼容老内核：统一用显式判断，不用 ?. 和 ?? 语法（老版微信 X5 内核解析会整体失败）
-function dlVal(c) {
-  const d = daysLeft(c);
-  return d === null ? 9999 : d;
+
+// ---------------- 子路径部署与登录鉴权 ----------------
+// BASE 自适应：根部署为 ""，nginx 反代 /app/jobhub/ 下自动取前缀。
+const BASE = location.pathname.replace(/\/index\.html$/, "").replace(/\/+$/, "");
+const AUTH_KEY = "eejobhub-token";
+
+function authToken() {
+  try { return localStorage.getItem(AUTH_KEY) || ""; } catch (e) { return ""; }
+}
+
+// 带 BASE 与会话 token 的 fetch；401 时弹登录层（供查看公开、编辑需登录的模式）。
+// 公网明文链路偶发连接重置：网络层错误自动重试 2 次（业务错误不重试）。
+function wfetch(path, opts, attempt) {
+  opts = opts || {};
+  opts.headers = opts.headers || {};
+  const token = authToken();
+  if (token) opts.headers["Authorization"] = "Bearer " + token;
+  attempt = attempt || 0;
+  return fetch(BASE + path, opts).then(function (res) {
+    if (res.status === 401) { showAuth(); }
+    return res;
+  }).catch(function (err) {
+    if (attempt < 2) {
+      return new Promise(function (res) { setTimeout(res, 350 * (attempt + 1)); })
+        .then(function () { return wfetch(path, opts, attempt + 1); });
+    }
+    throw err;
+  });
+}
+
+function showAuth() {
+  const mask = document.getElementById("auth-mask");
+  if (!mask || !mask.hidden) return;
+  mask.hidden = false;
+  const err = document.getElementById("auth-error");
+  if (err) err.hidden = true;
+  setTimeout(function () {
+    const p = document.getElementById("auth-password");
+    if (p) p.focus();
+  }, 60);
+}
+
+function doLogin(password) {
+  // 挑战-响应：x = sha256(salt + password)，回传 sha256(x + nonce)（明文 HTTP 下防泄露/防重放）
+  return wfetch("/api/auth/challenge").then(function (r) {
+    if (!r.ok) throw new Error("获取挑战失败（" + r.status + "）");
+    return r.json();
+  }).then(function (cc) {
+    const x = sha256hex(cc.salt + password);
+    return wfetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nonce: cc.nonce, resp: sha256hex(x + cc.nonce) }),
+    }).then(function (r) { return r.json(); }).then(function (out) {
+      if (out.error) throw new Error(out.error);
+      try { localStorage.setItem(AUTH_KEY, out.token); } catch (e) { }
+    });
+  });
+}
+
+function bindAuth() {
+  const box = document.getElementById("auth-box");
+  if (!box) return;
+  box.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    const btn = document.getElementById("auth-submit"), err = document.getElementById("auth-error");
+    err.hidden = true;
+    btn.disabled = true; btn.textContent = "验证中…";
+    doLogin(document.getElementById("auth-password").value).then(function () {
+      location.reload();
+    }).catch(function (e) {
+      err.textContent = (e && e.message) || "登录失败，请重试";
+      err.hidden = false;
+      btn.disabled = false; btn.textContent = "登 录";
+    });
+  });
+  // 查询是公开的：不想登录的访客可以只浏览，点编辑时才会再弹
+  const skip = document.getElementById("auth-skip");
+  if (skip) skip.onclick = function () { document.getElementById("auth-mask").hidden = true; };
 }
 
 function deadlineText(c) {
@@ -46,7 +122,7 @@ const STATUS_CLASS = { "进行中": "green", "即将截止": "orange", "常年�
 // ---------------- 全局状态 ----------------
 let META = null;
 let COMPANIES = [];
-const F = { q: "", batch: "", cat: "", sub: "", status: "", city: "", year: "", tag: "", pinned: false, sort: "recommend" };
+const F = { q: "", batch: "", cat: "", sub: "", status: "", city: "", year: "", tag: "", pinned: false, applied: false, sort: "recommend" };
 
 const CITY_OPTIONS = [
   ["广东（全省）", ["广东", "广州", "深圳", "珠海", "佛山", "东莞", "中山", "惠州", "湛江", "肇庆", "江门", "汕头", "揭阳"]],
@@ -87,9 +163,9 @@ async function loadData() {
     return;
   }
   const [metaRes, compRes, statsRes] = await Promise.all([
-    fetch("/api/meta").then(r => r.json()),
-    fetch("/api/companies").then(r => r.json()),
-    fetch("/api/stats").then(r => r.json()),
+    wfetch("/api/meta").then(r => r.json()),
+    wfetch("/api/companies").then(r => r.json()),
+    wfetch("/api/stats").then(r => r.json()),
   ]);
   META = metaRes;
   COMPANIES = compRes.companies;
@@ -162,9 +238,10 @@ function bindFilterControls() {
   $("#f-tag").onchange = (e) => { F.tag = e.target.value; renderList(); };
   $("#f-sort").onchange = (e) => { F.sort = e.target.value; renderList(); };
   $("#f-pinned").onchange = (e) => { F.pinned = e.target.checked; renderList(); };
+  $("#f-applied").onchange = (e) => { F.applied = e.target.checked; renderList(); };
   $("#btn-reset").onclick = () => {
     Object.assign(F, { q: "", batch: "", cat: "", sub: "", status: "", city: "", year: "", tag: "", pinned: false, sort: "recommend" });
-    $("#f-q").value = ""; $("#f-pinned").checked = false;
+    $("#f-q").value = ""; $("#f-pinned").checked = false; $("#f-applied").checked = false;
     buildFilters(); renderList();
   };
   $("#btn-add").onclick = () => openAddModal();
@@ -196,6 +273,7 @@ function filtered() {
     if (F.year && c.year !== F.year) return false;
     if (F.tag && !(c.tags || []).includes(F.tag)) return false;
     if (F.pinned && !c.pinned) return false;
+    if (F.applied && !c.applied) return false;
     return cityMatch(c);
   });
   if (F.sort === "deadline") {
@@ -252,6 +330,8 @@ function cardHTML(c, idx) {
       <span class="cc-actions">
         <a class="btn btn-primary btn-sm" href="${esc(c.apply_url || c.official_site || "#")}" target="_blank" rel="noopener"
            onclick="${c.apply_url ? "" : "event.preventDefault();toast(\'该企业暂无投递链接，请先在编辑中补充\')"}">去投递 ↗</a>
+        <button class="btn btn-sm btn-applymark ${c.applied ? "on" : ""}" data-applymark="${c.id}"
+          title="标记我的投递状态（仅自己可见，存在服务器）">${c.applied ? "✓ 已投" : "○ 投了"}</button>
         <button class="btn btn-sm" data-detail="${c.id}">详情</button>
         ${c.auto_added ? `<button class="btn btn-sm" data-del="${c.id}" title="删除这条自动收录">🗑</button>` : ""}
       </span>
@@ -289,13 +369,14 @@ function renderList() {
 
 function bindCardEvents() {
   $$("[data-detail]").forEach(el => el.onclick = () => openDetail(el.dataset.detail));
+  $$("[data-applymark]").forEach(el => el.onclick = () => toggleApplied(el.dataset.applymark));
   $$("[data-del]").forEach(el => el.onclick = () => deleteCompany(el.dataset.del));
 }
 
 async function deleteCompany(id) {
   const c = COMPANIES.find(x => x.id === id);
   if (!c || !confirm(`确定删除「${c.name}」？\n（自动收录的企业可随时删除；若它来自种子库，重建数据时会回来）`)) return;
-  const res = await fetch("/api/companies/" + id, { method: "DELETE" });
+  const res = await wfetch("/api/companies/" + id, { method: "DELETE" });
   if (!res.ok) { toast("删除失败"); return; }
   toast(`已删除「${c.name}」`);
   closeModal("modal-detail");
@@ -405,7 +486,7 @@ async function saveEdit(c) {
     desc: formValue("e-desc"),
     ee_notes: formValue("e-ee"),
   };
-  const res = await fetch(`/api/companies/${c.id}`, {
+  const res = await wfetch(`/api/companies/${c.id}`, {
     method: "PATCH", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ fields }),
   });
@@ -458,7 +539,7 @@ async function saveAdd() {
     salary_text: formValue("a-salary"), desc: formValue("a-desc"),
     source_url: formValue("a-src"),
   };
-  const res = await fetch("/api/companies", {
+  const res = await wfetch("/api/companies", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
   });
   if (!res.ok) {
@@ -478,7 +559,7 @@ async function saveAdd() {
 let refreshTimer = null;
 
 async function startRefresh() {
-  const res = await fetch("/api/refresh", { method: "POST" });
+  const res = await wfetch("/api/refresh", { method: "POST" });
   if (!res.ok) { toast((await res.json().catch(() => ({}))).detail || "无法开始更新"); return; }
   openModal("modal-refresh");
   $("#refresh-sub").innerHTML = '<span class="spin">⟳</span> 正在从各数据源抓取最新动态…（后台限速抓取，预计几十秒）';
@@ -489,7 +570,7 @@ async function startRefresh() {
 
 async function pollRefresh() {
   clearTimeout(refreshTimer);
-  const st = await fetch("/api/refresh/status").then(r => r.json());
+  const st = await wfetch("/api/refresh/status").then(r => r.json());
   renderRefreshResults(st);
   if (st.running) { refreshTimer = setTimeout(pollRefresh, 1200); return; }
   if (st.finished_at) {
@@ -522,7 +603,7 @@ async function openDigest() {
   $("#digest-body").innerHTML = "";
   let d;
   try {
-    const res = await fetch("/api/digest");
+    const res = await wfetch("/api/digest");
     if (!res.ok) throw new Error();
     d = await res.json();
   } catch (e) {
@@ -558,8 +639,8 @@ async function openDigest() {
   let d = null;
   try {
     const [digestRes, kwRes] = await Promise.all([
-      fetch("/api/digest").then(r => { if (!r.ok) throw 0; return r.json(); }),
-      fetch("/api/keywords").then(r => r.json()),
+      wfetch("/api/digest").then(r => { if (!r.ok) throw 0; return r.json(); }),
+      wfetch("/api/keywords").then(r => r.json()),
     ]);
     d = digestRes;
     renderKeywordEditor(kwRes.keywords || []);
@@ -607,7 +688,7 @@ function renderKeywordEditor(keywords) {
       <button class="btn btn-sm btn-green" id="kw-add">添加</button>
     </div>`;
   const save = async (kws) => {
-    const res = await fetch("/api/keywords", {
+    const res = await wfetch("/api/keywords", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ keywords: kws }),
     });
@@ -639,7 +720,7 @@ async function doArticleSearch() {
   const box = $("#article-results");
   if (!q) { box.innerHTML = '<div class="empty-tip">输入关键词开始搜索</div>'; return; }
   box.innerHTML = '<div class="empty-tip">搜索中…</div>';
-  const res = await fetch("/api/search?q=" + encodeURIComponent(q));
+  const res = await wfetch("/api/search?q=" + encodeURIComponent(q));
   const data = await res.json();
   if (!data.results.length) {
     box.innerHTML = `<div class="empty-tip">没有包含「${esc(q)}」的存档公告</div>`;
@@ -667,7 +748,7 @@ async function openLinkcheck() {
 
 async function renderLinkcheck() {
   clearTimeout(linkcheckTimer);
-  const d = await fetch("/api/linkcheck").then(r => r.json());
+  const d = await wfetch("/api/linkcheck").then(r => r.json());
   $("#linkcheck-sub").textContent = d.last_run
     ? `上次检查：${d.last_run.replace("T", " ")} · 正常 ${d.ok} / 共 ${d.total} 个入口`
     : "还没有检查过，点下方按钮开始";
@@ -691,7 +772,7 @@ async function renderLinkcheck() {
 
 // ---------------- 收件箱 ----------------
 async function openInbox() {
-  const data = await fetch("/api/inbox").then(r => r.json());
+  const data = await wfetch("/api/inbox").then(r => r.json());
   const items = data.items || [];
   $("#inbox-list").innerHTML = items.length ? items.map(i => `
     <div class="inbox-item">
@@ -718,7 +799,7 @@ function promoteInbox(jsonStr) {
 }
 
 async function dismissInbox(url) {
-  await fetch("/api/inbox?url=" + encodeURIComponent(url), { method: "DELETE" });
+  await wfetch("/api/inbox?url=" + encodeURIComponent(url), { method: "DELETE" });
   openInbox();
 }
 
@@ -985,9 +1066,9 @@ async function exportShareImage() {
 
 async function buildOfflineHTML() {
   const [tpl, css, js] = await Promise.all([
-    fetch("/static/index.html").then(r => r.text()),
-    fetch("/static/style.css").then(r => r.text()),
-    fetch("/static/app.js").then(r => r.text()),
+    wfetch("/static/index.html").then(r => r.text()),
+    wfetch("/static/style.css").then(r => r.text()),
+    wfetch("/static/app.js").then(r => r.text()),
   ]);
   const now = new Date();
   const pad = (n) => (n < 10 ? "0" + n : "" + n);
@@ -999,12 +1080,13 @@ async function buildOfflineHTML() {
             years: META.years, tags: META.tags, sorts: META.sorts },
     companies: COMPANIES,
   };
+  // 内嵌的 js 源码里含脚本闭合标签字面量，必须转义——若把完整闭合标签写进本文件
+  // （注释也算），被内联/内嵌进 HTML 时会被解析器提前截断脚本块
   const dataJs = "window.STATIC_DATA=" + JSON.stringify(payload).replace(/<\//g, () => "<\\/") + ";";
-  // 内嵌的 js 源码里含 </script> 字面量，必须转义，否则导出页脚本块会被提前截断
   const escScript = (s) => s.replace(/<\/script>/gi, () => "<\\/script>");
   // 标签字面量用拼接构造：本文件被内嵌进导出页后，源码里不能残留完整标签
-  const cssLink = "<" + "link rel=\"stylesheet\" href=\"/static/style.css\">";
-  const jsTag = "<" + "script src=\"/static/app.js\">" + "</" + "script>";
+  const cssLink = "<" + "link rel=\"stylesheet\" href=\"static/style.css\">";
+  const jsTag = "<" + "script src=\"static/app.js\">" + "</" + "script>";
   // 关键：替换串必须用「替换函数」形式！字符串替换会把 $$ 转成 $、$& 还原为匹配项，
   // 整份源码/JSON 作为替换串时会被静默改写（$$ 恰好是本文件的助手函数名，曾导致导出页 const 重复声明全站白屏）
   let html = tpl.replace(cssLink, () => "<style>\n" + css + "\n</" + "style>");
@@ -1075,12 +1157,65 @@ function initTheme() {
 }
 
 // ---------------- 初始化 ----------------
+// ---------------- 我的投递标记（applied 字段，存服务器） ----------------
+async function toggleApplied(id) {
+  const c = COMPANIES.find(x => x.id === id);
+  if (!c) return;
+  const res = await wfetch(`/api/companies/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ fields: { applied: !c.applied } }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    toast("标记失败：" + (err.detail || res.status) + (res.status === 401 ? "（请先登录）" : ""), 3200);
+    return;
+  }
+  c.applied = !c.applied;
+  toast(c.applied ? `✓ 已标记「${c.name}」为已投递` : `已取消「${c.name}」的投递标记`, 2400);
+  renderList();
+}
+
+// ---------------- 站内截止提醒 ----------------
+function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { } }
+
+function renderDeadlineAlert() {
+  const box = document.getElementById("deadline-alert");
+  if (!box) return;
+  const day = today();
+  if (lsGet("deadline-dismissed") === day) { box.hidden = true; return; }
+  const t0 = new Date(); t0.setHours(0, 0, 0, 0);
+  const items = COMPANIES
+    .filter(c => c.deadline && c.status !== "已结束" && c.status !== "未开启")
+    .map(c => ({ name: c.name, days: Math.round((new Date(c.deadline + "T23:59:59") - t0) / 86400000) }))
+    .filter(x => x.days >= 0 && x.days <= 7)
+    .sort((a, b) => a.days - b.days).slice(0, 8);
+  if (!items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<span class="da-icon">⏰</span><span class="da-text"><b>' + items.length +
+    ' 家</b> 企业 7 天内截止：' + items.map(x => esc(x.name) +
+    ' <i class="da-days' + (x.days <= 2 ? ' urgent' : '') + '">(' +
+    (x.days === 0 ? '今天' : x.days + ' 天') + ')</i>').join("、") +
+    '</span><button class="da-close" title="今天不再提醒">✕</button>';
+  box.querySelector(".da-close").onclick = function () {
+    lsSet("deadline-dismissed", day); box.hidden = true;
+  };
+}
+
 async function init() {
   initTheme();
+  bindAuth();
+  // 鉴权探测：服务端启用登录且会话无效时只弹登录层，数据加载交给 401 拦截
+  try {
+    const chk = await wfetch("/api/auth/check").then(r => r.json());
+    if (chk.enabled && !chk.ok) { showAuth(); }
+  } catch (e) { /* 服务不可达时仍正常启动，错误交给具体请求 */ }
   await loadData();
   buildFilters();
   bindFilterControls();
   renderList();
+  renderDeadlineAlert();
 
   $$(".nav-tab").forEach(t => t.onclick = () => switchView(t.dataset.view));
   const hash = location.hash.replace("#/", "");
@@ -1102,6 +1237,10 @@ async function init() {
     const v = location.hash.replace("#/", "");
     if (["jobs", "timeline", "guide"].includes(v)) switchView(v);
   });
+  // PWA：service worker 由应用根伺服（/sw.js），scope 即应用子路径
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register(BASE + "/sw.js").catch(() => {});
+  }
 }
 
 init().catch(err => {
