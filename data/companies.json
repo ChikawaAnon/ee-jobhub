@@ -663,6 +663,119 @@
   "salary_text": "",
   "salary_structure": "",
   "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "李森智能2027校招启动！运营推广hc多专业不限！ 长沙易招招网络科技有限公司",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/job/view/id/2903352",
+    "date": "2026-09-02"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "小红书2027届秋招正式批启动！ 长沙易招招网络科技有限公司",
+    "url": "https://gdou.jysd.com/job/view/id/2908141",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:20:26"
+   },
+   {
+    "title": "李森智能2027校招启动！运营推广hc多专业不限！ 长沙易招招网络科技有限公司",
+    "url": "https://gdou.jysd.com/job/view/id/2903352",
+    "date": "2026-08-31",
+    "source": "gdou",
+    "fetched_at": "2026-09-02T08:00:08"
+   }
+  ],
+  "last_crawl": "2026-09-10T23:20:26",
+  "id": "c-0c32873a",
+  "name": "长沙易招招网络科技有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/job/view/id/2903352",
+  "official_site": "",
+  "updated_at": "2026-09-02T08:00:08"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "德康集团2026年秋季校园招聘简章",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/campus/view/id/1134979",
+    "date": "2026-09-07"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "德康集团2026年秋季校园招聘简章",
+    "url": "https://gdou.jysd.com/campus/view/id/1134979",
+    "date": "2026-09-03",
+    "source": "gdou",
+    "fetched_at": "2026-09-07T08:00:10"
+   }
+  ],
+  "last_crawl": "2026-09-07T08:00:10",
+  "id": "c-34085e21",
+  "name": "德康集团",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/campus/view/id/1134979",
+  "official_site": "",
+  "updated_at": "2026-09-07T08:00:10"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
   "desc": "龙湖集团2027届绽放校园招聘火热开启！——去绽放，耀未来！",
   "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
   "tags": [
@@ -735,6 +848,13 @@
   "manual_overrides": [],
   "news": [
    {
+    "title": "创维集团有限公司27届校园招聘简章",
+    "url": "https://gdou.jysd.com/campus/view/id/1136408",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:18:27"
+   },
+   {
     "title": "创维集团2027届全球校园招聘空中宣讲会9月3日晚19点与您相约",
     "url": "https://gdou.jysd.com/teachin/view/id/208781",
     "date": "2026-09-03",
@@ -742,7 +862,7 @@
     "fetched_at": "2026-08-29T23:51:11"
    }
   ],
-  "last_crawl": "2026-08-29T23:51:11",
+  "last_crawl": "2026-09-10T23:18:27",
   "id": "c-65a58d0f",
   "name": "创维集团",
   "cat": "general",
@@ -752,6 +872,229 @@
   "apply_url": "https://gdou.jysd.com/teachin/view/id/208781",
   "official_site": "",
   "updated_at": "2026-08-29T23:51:11"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "人保财险广东省分公司2027统筹校园招聘简章",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/campus/view/id/1135093",
+    "date": "2026-09-07"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "人保财险广东省分公司2027统筹校园招聘简章",
+    "url": "https://gdou.jysd.com/campus/view/id/1135093",
+    "date": "2026-09-03",
+    "source": "gdou",
+    "fetched_at": "2026-09-07T08:00:10"
+   }
+  ],
+  "last_crawl": "2026-09-07T08:00:10",
+  "id": "c-668bc942",
+  "name": "人保财险广东省分公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/campus/view/id/1135093",
+  "official_site": "",
+  "updated_at": "2026-09-07T08:00:10"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "实习"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [
+   "中山"
+  ],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "CTA实习生 中山康方生物医药有限公司",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/job/view/id/2903554",
+    "date": "2026-09-04"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "CRA实习生 中山康方生物医药有限公司",
+    "url": "https://gdou.jysd.com/job/view/id/2903553",
+    "date": "2026-09-01",
+    "source": "gdou",
+    "fetched_at": "2026-09-07T08:00:10"
+   },
+   {
+    "title": "CTA实习生 中山康方生物医药有限公司",
+    "url": "https://gdou.jysd.com/job/view/id/2903554",
+    "date": "2026-09-01",
+    "source": "gdou",
+    "fetched_at": "2026-09-04T01:04:44"
+   }
+  ],
+  "last_crawl": "2026-09-07T08:00:10",
+  "id": "c-77b1dc7b",
+  "name": "康方生物医药有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/job/view/id/2903554",
+  "official_site": "",
+  "updated_at": "2026-09-04T01:04:44"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [
+   "广州"
+  ],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "广州星弘科技有限公司·校园招聘",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/campus/view/id/1134358",
+    "date": "2026-09-04"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "广州星弘科技有限公司·校园招聘",
+    "url": "https://gdou.jysd.com/campus/view/id/1134358",
+    "date": "2026-09-01",
+    "source": "gdou",
+    "fetched_at": "2026-09-04T01:04:44"
+   }
+  ],
+  "last_crawl": "2026-09-04T01:04:44",
+  "id": "c-7ae4ad08",
+  "name": "星弘科技有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/campus/view/id/1134358",
+  "official_site": "",
+  "updated_at": "2026-09-04T01:04:44"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "「Build What‘s Next!」小红书2027校园招聘全球启动！ 小红书科技有限公司",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/job/view/id/2907714",
+    "date": "2026-09-10"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "「Build What‘s Next!」小红书2027校园招聘全球启动！ 小红书科技有限公司",
+    "url": "https://gdou.jysd.com/job/view/id/2907714",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:18:27"
+   }
+  ],
+  "last_crawl": "2026-09-10T23:18:27",
+  "id": "c-a3939b2e",
+  "name": "小红书科技有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/job/view/id/2907714",
+  "official_site": "",
+  "updated_at": "2026-09-10T23:18:27"
  },
  {
   "alias": "",
@@ -805,6 +1148,370 @@
   "apply_url": "https://gdou.jysd.com/teachin/view/id/207445",
   "official_site": "",
   "updated_at": "2026-08-29T23:51:11"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "比克电池有限公司2027届毕业生招聘会",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/campus/view/id/1136428",
+    "date": "2026-09-10"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "比克电池有限公司2027届毕业生招聘会",
+    "url": "https://gdou.jysd.com/campus/view/id/1136428",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:18:27"
+   }
+  ],
+  "last_crawl": "2026-09-10T23:18:27",
+  "id": "c-c03528c2",
+  "name": "比克电池有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/campus/view/id/1136428",
+  "official_site": "",
+  "updated_at": "2026-09-10T23:18:27"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [
+   "深圳"
+  ],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "iMile校招岗位 深圳艾麦供应链服务有限公司",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/job/view/id/2903411",
+    "date": "2026-09-02"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "iMile校招岗位 深圳艾麦供应链服务有限公司",
+    "url": "https://gdou.jysd.com/job/view/id/2903411",
+    "date": "2026-08-31",
+    "source": "gdou",
+    "fetched_at": "2026-09-02T08:00:08"
+   }
+  ],
+  "last_crawl": "2026-09-02T08:00:08",
+  "id": "c-d4b905b0",
+  "name": "艾麦供应链服务有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/job/view/id/2903411",
+  "official_site": "",
+  "updated_at": "2026-09-02T08:00:08"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "实习"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "加多宝集团2027届校园招聘简章-实习生/应届生/往届生",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/campus/view/id/1136168",
+    "date": "2026-09-10"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "加多宝集团2027届校园招聘简章",
+    "url": "https://gdou.jysd.com/campus/view/id/1136166",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:20:26"
+   },
+   {
+    "title": "加多宝集团2027届校园招聘简章-实习生/应届生/往届生",
+    "url": "https://gdou.jysd.com/campus/view/id/1136168",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:18:27"
+   }
+  ],
+  "last_crawl": "2026-09-10T23:20:26",
+  "id": "c-d6c76817",
+  "name": "加多宝集团",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/campus/view/id/1136168",
+  "official_site": "",
+  "updated_at": "2026-09-10T23:18:27"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "华友钴业2027校园招聘 浙江华友钴业股份有限公司",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/job/view/id/2904468",
+    "date": "2026-09-04"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "华友钴业2027校园招聘 浙江华友钴业股份有限公司",
+    "url": "https://gdou.jysd.com/job/view/id/2904468",
+    "date": "2026-09-02",
+    "source": "gdou",
+    "fetched_at": "2026-09-04T01:04:44"
+   }
+  ],
+  "last_crawl": "2026-09-04T01:04:44",
+  "id": "c-d74bdc1a",
+  "name": "浙江华友钴业股份有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/job/view/id/2904468",
+  "official_site": "",
+  "updated_at": "2026-09-04T01:04:44"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [
+   "深圳"
+  ],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "中国银行股份有限公司深圳市分行2027年校园招聘",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/campus/view/id/1136243",
+    "date": "2026-09-10"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "中国农业银行浙江省分行2027年度校园招聘",
+    "url": "https://gdou.jysd.com/campus/view/id/1136558",
+    "date": "2026-09-10",
+    "source": "gdou",
+    "fetched_at": "2026-09-12T08:00:07"
+   },
+   {
+    "title": "中国农业银行福建省分行2027年度校园招聘公告",
+    "url": "https://gdou.jysd.com/campus/view/id/1136884",
+    "date": "2026-09-11",
+    "source": "gdou",
+    "fetched_at": "2026-09-12T08:00:07"
+   },
+   {
+    "title": "中国建设银行深圳市分行2027年度校园招聘公告 中国建设银行股份有限公司深圳",
+    "url": "https://gdou.jysd.com/job/view/id/2908102",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:50:32"
+   },
+   {
+    "title": "招商银行广州分行2027校园招聘宣讲会 钟海楼03029",
+    "url": "https://gdou.jysd.com/teachin/view/id/209708",
+    "date": "2026-09-16",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:20:26"
+   },
+   {
+    "title": "中国建设银行深圳市分行2027年度校园招聘公告",
+    "url": "https://gdou.jysd.com/campus/view/id/1136356",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:20:26"
+   },
+   {
+    "title": "中国银行股份有限公司深圳市分行2027年校园招聘",
+    "url": "https://gdou.jysd.com/campus/view/id/1136243",
+    "date": "2026-09-09",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:18:27"
+   }
+  ],
+  "last_crawl": "2026-09-12T08:00:07",
+  "id": "c-d7f2e188",
+  "name": "中国银行股份有限公司",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/campus/view/id/1136243",
+  "official_site": "",
+  "updated_at": "2026-09-10T23:18:27"
+ },
+ {
+  "alias": "",
+  "batch": [
+   "秋招"
+  ],
+  "status": "进行中",
+  "year": "2027届",
+  "positions": [],
+  "position_details": [],
+  "cities": [],
+  "start_date": null,
+  "deadline": null,
+  "deadline_note": "",
+  "salary_text": "",
+  "salary_structure": "",
+  "salary_source": "公开渠道聚合，仅供参考",
+  "desc": "双胞胎集团2027届校园招聘简章——广东海洋大学",
+  "ee_notes": "🤖 自动收录：信息来自就业网公告标题，点详情查看公告原文，用「修正」补充岗位/薪资/投递入口",
+  "tags": [
+   "自动收录"
+  ],
+  "pinned": false,
+  "sources": [
+   {
+    "type": "auto",
+    "url": "https://gdou.jysd.com/campus/view/id/1135009",
+    "date": "2026-09-07"
+   }
+  ],
+  "last_verified": null,
+  "verify_note": "",
+  "auto_added": true,
+  "manual_overrides": [],
+  "news": [
+   {
+    "title": "双胞胎集团2027届校园招聘简章——广东海洋大学",
+    "url": "https://gdou.jysd.com/campus/view/id/1135009",
+    "date": "2026-09-03",
+    "source": "gdou",
+    "fetched_at": "2026-09-07T08:00:10"
+   }
+  ],
+  "last_crawl": "2026-09-07T08:00:10",
+  "id": "c-edd64045",
+  "name": "双胞胎集团",
+  "cat": "general",
+  "sub": "待分类",
+  "ctype": "民企",
+  "industry": "",
+  "apply_url": "https://gdou.jysd.com/campus/view/id/1135009",
+  "official_site": "",
+  "updated_at": "2026-09-07T08:00:10"
  },
  {
   "alias": "CALB",
@@ -2879,6 +3586,13 @@
   "manual_overrides": [],
   "news": [
    {
+    "title": "中企世华洋（天津）船舶管理有限公司",
+    "url": "https://gdou.jysd.com/campus/view/id/1134162",
+    "date": "2026-08-31",
+    "source": "gdou",
+    "fetched_at": "2026-08-31T20:24:01"
+   },
+   {
     "title": " 中企世华洋（天津）船舶管理有限公司",
     "url": "https://gdou.jysd.com/teachin/view/id/206049",
     "date": "2026-04-10",
@@ -2886,7 +3600,7 @@
     "fetched_at": "2026-08-29T23:24:31"
    }
   ],
-  "last_crawl": "2026-08-29T23:24:31",
+  "last_crawl": "2026-08-31T20:24:01",
   "id": "cssc",
   "name": "中国船舶集团",
   "cat": "general",
@@ -4508,6 +5222,13 @@
   "manual_overrides": [],
   "news": [
    {
+    "title": "“就在南粤”广东省2027届普通高校毕业生供需对接活动 （粤西地 湛江市麻章区海大路1号广东海洋大学东区体育场",
+    "url": "https://gdou.jysd.com/jobfair/view/id/58242",
+    "date": "2026-11-01",
+    "source": "gdou",
+    "fetched_at": "2026-09-10T23:18:27"
+   },
+   {
     "title": " 广东海洋大学90周年校庆工科专场招聘会 湛江市麻章区海大路1号广东海洋大学图海楼前广场",
     "url": "https://gdou.jysd.com/jobfair/view/id/53630",
     "date": "2025-12-12",
@@ -4543,7 +5264,7 @@
     "fetched_at": "2026-08-29T23:24:31"
    }
   ],
-  "last_crawl": "2026-08-29T23:24:31",
+  "last_crawl": "2026-09-10T23:18:27",
   "id": "gd-haid",
   "name": "海大集团",
   "cat": "general",
@@ -11416,8 +12137,23 @@
   "verify_note": "校招子域探测失效，已回退官网首页（请从官网导航到招聘频道投递）；入口待核验",
   "auto_added": false,
   "manual_overrides": [],
-  "news": [],
-  "last_crawl": null,
+  "news": [
+   {
+    "title": "通威农业发展有限公司2027届全球校园招聘",
+    "url": "https://gdou.jysd.com/campus/view/id/1136663",
+    "date": "2026-09-10",
+    "source": "gdou",
+    "fetched_at": "2026-09-12T08:00:07"
+   },
+   {
+    "title": "通威农业发展有限公司2027届全球校园招聘",
+    "url": "https://gdou.jysd.com/campus/view/id/1135168",
+    "date": "2026-09-04",
+    "source": "gdou",
+    "fetched_at": "2026-09-07T08:00:10"
+   }
+  ],
+  "last_crawl": "2026-09-12T08:00:07",
   "id": "tongwei",
   "name": "通威股份",
   "cat": "newenergy",
@@ -12410,7 +13146,7 @@
   "salary_structure": "基本工资+绩效+年终，五险一金全额+补充公积金",
   "salary_source": "公开渠道聚合，仅供参考",
   "desc": "智驾标签最浓的新势力，广州总部+肇庆工厂",
-  "ee_notes": "广东车企优选；整车电气/高压系统对口；广州总部待遇在广东制造业里领先",
+  "ee_notes": "",
   "tags": [
    "S级对口",
    "广东有岗"
@@ -12431,7 +13167,10 @@
   "last_verified": "2026-08-29",
   "verify_note": "小鹏校招官网（飞书招聘）确认可达，2027届校招岗位可投递",
   "auto_added": false,
-  "manual_overrides": [],
+  "manual_overrides": [
+   "ee_notes",
+   "applied"
+  ],
   "news": [],
   "last_crawl": null,
   "id": "xpeng",
@@ -12442,7 +13181,8 @@
   "industry": "新能源整车",
   "apply_url": "https://xiaopeng.jobs.feishu.cn/campus/",
   "official_site": "https://www.xiaopeng.com",
-  "updated_at": "2026-08-30T09:54:16"
+  "updated_at": "2026-09-12T02:26:09",
+  "applied": false
  },
  {
   "alias": "三峡集团长江电力",
