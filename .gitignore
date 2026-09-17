@@ -1,5 +1,14 @@
 venv/
+venv*/
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+data/auth.json
 data/snapshots/
-data/digest/task.log
+data/digest/
+data/articles.json
+data/inbox.json
+data/linkcheck.json
+*.log
+.DS_Store
+Thumbs.db
